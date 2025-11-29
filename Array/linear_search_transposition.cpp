@@ -46,7 +46,9 @@ int main(){
     arr_1.setElement(arr,5);
     cout<<"Element found at "<<arr_1.linearSearch(50)<<endl;
     arr_1.display();
-    
+
+    //Now if the same element is again searched then it will take less time then before
+
     cout<<"\nElement found at "<<arr_1.linearSearch(50)<<endl;
     arr_1.display();
     
