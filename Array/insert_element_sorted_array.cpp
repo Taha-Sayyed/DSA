@@ -41,7 +41,7 @@ int main(){
     int arr[5]={4,8,10,15,18};
     ArrayHandler arr_1;
     arr_1.setElement(arr,5);
-    arr_1.insertElementSort(12);
+    arr_1.insertElementSort();
     arr_1.displayDetail();   
     return 0;
 }
