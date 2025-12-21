@@ -26,10 +26,17 @@ void create(int A[],int n){
     }
 }
 
-void display(class Node *p){
+void display_loop(class Node *p){
     while(p!=0){
         cout<<p->data<<" ";
         p=p->next;
+    }
+}
+
+void display_recursive(class Node *p){
+    if(p!=0){
+        cout<<p->data<<" ";
+        display_recursive(p->next);
     }
 }
 
@@ -37,8 +44,11 @@ int main(){
 
     int A[]={10,20,30,40};
     create(A,4);
-    display(first);
-
+    cout<<"Display using Loop"<<endl;
+    display_loop(first);
+    cout<<"\n---------------------------------------"<<endl;
+    cout<<"Display using recursion"<<endl;
+    display_recursive(first);
 
     return 0;
 }
