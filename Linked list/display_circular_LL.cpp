@@ -38,11 +38,22 @@ void display_circular_LL(class Node *p){
     }while(p!=Head);
 }
 
+void recursive_display_circular_LL(class Node *p){
+    static int flag=0;
+    if(p!=Head || flag==0){
+        flag=1;
+        cout<<p->data<<" ";
+        display_circular_LL(p=p->next);
+    }
+}
+
 int main(){
 
     int A[]={10,20,30,40,50};
     create(A,5);
     display_circular_LL(Head);
+    cout<<"\n";
+    recursive_display_circular_LL(Head);
 
 
     return 0;
