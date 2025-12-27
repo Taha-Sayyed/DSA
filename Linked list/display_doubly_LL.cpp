@@ -24,7 +24,7 @@ void create(int A[],int n){
         t=new Node;
         t->data=A[i];
         last->next=t;
-        t->prev=Head;
+        t->prev=last;
         t->next=NULL;
         last=t;
     }
