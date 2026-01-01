@@ -81,7 +81,7 @@ class Stack{
                 cout<<"Stack Underflow"<<endl;
                 return;
             }
-            for(int i=top;i>0;i--){
+            for(int i=top;i>=0;i--){
                 cout<<s[top--]<<" ";
             }
         }
