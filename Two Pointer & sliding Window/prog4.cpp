@@ -1,6 +1,6 @@
 // Longest Substring without repeating characters
 //Brute force approach: TC: O(N*2)  SC:O(256)
-//Optimal approach: remaining
+//Optimal approach: TC:O(N) SC:O(256)
 
 
 #include<iostream>
