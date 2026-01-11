@@ -22,7 +22,8 @@ class ArrayHandler{
         }
         void setElement(char A[],int n);
         int Max(int x,int y);
-        int longest_substring();
+        int longest_substring_brute();
+        int longest_substring_optimal();
 };
 
 void ArrayHandler::setElement(char A[],int n){
@@ -45,7 +46,7 @@ int ArrayHandler::Max(int x,int y){
     }
 }
 
-int ArrayHandler::longest_substring(){
+int ArrayHandler::longest_substring_brute(){
     int len;
     int maxlen=0;
     for(int i=0;i<length;i++){
@@ -60,12 +61,33 @@ int ArrayHandler::longest_substring(){
     return maxlen;
 }
 
+int ArrayHandler::longest_substring_optimal(){
+    int len=0;
+    int l=0;
+    int r=0;
+    int maxlen=0;
+    int hash[256]={-1};
+    while(r<length){
+        if(hash[arr[r]]!=-1){
+            if(hash[arr[r]]>=l){
+                l=hash[arr[r]]+1;
+            }
+        }
+        len=r-l+1;
+        maxlen=Max(maxlen,len);
+        hash[arr[r]]=r;
+        r++;
+    }
+    return maxlen;
+}
+
 int main(){
 
     char A[]={'c','a','d','b','z','a','b','c','d','\0'};
     ArrayHandler arr(10);
     arr.setElement(A,9);
-    cout<<arr.longest_substring()<<endl;
+    cout<<arr.longest_substring_brute()<<endl;
+    cout<<arr.longest_substring_optimal()<<endl;
 
     return 0;
 }
