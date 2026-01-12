@@ -1,6 +1,7 @@
 //Maximum Consecutive ones
-//Brute solution: TC:O(N*2)   SC:O(1)
-//Better solution: TC:O(2N)   SC:O(1)
+//Brute solution:   TC:O(N*2)   SC:O(1)
+//Better solution:  TC:O(2N)    SC:O(1)
+//Optimal solution: TC:O(N)     SC:O(1)
 
 #include<iostream>
 using namespace std;
@@ -23,6 +24,7 @@ class ArrayHandler{
         int Max(int x,int y);
         int max_consecutive_one_brute(int k);
         int max_consecutive_one_better(int k);
+        int max_consecutive_one_optimal(int k);
 
         
 };
@@ -91,6 +93,30 @@ int ArrayHandler::max_consecutive_one_better(int k){
     return maxlen;
 }
 
+int ArrayHandler::max_consecutive_one_optimal(int k){
+    int maxlen=0;
+    int len;
+    int l=0;
+    int r=0;
+    int zeros=0;
+
+    while(r<length){
+        if(arr[r]==0){
+            zeros++;
+        }
+        if(zeros>k){
+            if(arr[l]==0){zeros--;}
+            l++;
+        }
+        if(zeros<=k){
+            len=r-l+1;
+            maxlen=Max(maxlen,len);
+        }
+        r++;
+    }
+    return maxlen;
+}
+
 int main(){
 
     int A[]={1,1,1,0,0,0,1,1,1,1,0};
@@ -98,6 +124,7 @@ int main(){
     arr.setElement(A,11);
     cout<<arr.max_consecutive_one_brute(2)<<endl;
     cout<<arr.max_consecutive_one_better(2)<<endl;
+    cout<<arr.max_consecutive_one_optimal(2)<<endl;
 
     return 0;
 }
