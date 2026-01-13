@@ -38,6 +38,7 @@ class Better{
 }
 
 
+
 public class BetterDemo {
     public static void main(String[] args) {
         ArrayList<Integer> arr = new ArrayList<>(List.of(3, 3, 3, 1, 2, 1, 1, 2, 3, 3, 4));
