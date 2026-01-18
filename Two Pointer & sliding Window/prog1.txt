@@ -50,9 +50,9 @@ maxLen=3
 //Psedocode
 
 int maxlen=0;
-for(int i=0;i<A.length();i++){
+for(int i=0;i<A.length();i++){          
     sum=0;
-    for(int j=i;j<A.length();j++){
+    for(int j=i;j<A.length();j++){      
         sum=sum+A[j];
         if(sum>k){
             break;
@@ -64,3 +64,8 @@ for(int i=0;i<A.length();i++){
 }
 
 return maxLen;
+
+Here the Outer loop runs for N times 
+the inner loop runs upto N times for each i
+Time complexity becomes O(N*2)
+Space complexity becomes O(1) since other then maxLen,i,j,sum we are not consuming any Space
