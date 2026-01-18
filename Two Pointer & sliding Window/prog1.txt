@@ -1,5 +1,5 @@
 // Max Subarray with sum<=k
-
+//Better Approach
 A       2   5   1   10   10
 index   0   1   2   3    4
                     l
@@ -29,12 +29,13 @@ while(r<A.length()){        --O(N)
 }
 
 TC: O(2N)
+SC: O(1)
 
 
 ---------------------------------------------------------------------------------------------------------------
 
 // Max Subarray with sum<=k
-
+//Brute Approach
 A          2   5   1   10   10
 index      0   1   2   3    4
                                 i
@@ -69,3 +70,35 @@ Here the Outer loop runs for N times
 the inner loop runs upto N times for each i
 Time complexity becomes O(N*2)
 Space complexity becomes O(1) since other then maxLen,i,j,sum we are not consuming any Space
+
+-------------------------------------------------------------------------------------------------------------------
+
+// Max Subarray with sum<=k
+//Optimal Approach
+A          2   5   1   10   10
+index      0   1   2   3    4
+                   l
+                            r
+
+
+sum=0+2=2+5=7+1=8+10=18-2=16-5=11
+k=14
+len=3
+maxlen=3
+
+//Psedocode
+
+while(r<A.length()){        --O(N)
+    sum=sum+A[r];
+
+    if(sum>k){           --O(N)
+        sum=sum-A[l];
+        l++;
+    }
+
+    if(sum<=k){
+        sum=sum+A[r];
+        maxLen=Max(maxlen,r-l+1);
+    }
+    r++;
+}
