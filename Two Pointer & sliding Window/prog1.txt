@@ -91,14 +91,17 @@ maxlen=3
 while(r<A.length()){        --O(N)
     sum=sum+A[r];
 
-    if(sum>k){           --O(N)
+    if(sum>k){           --O(1)
         sum=sum-A[l];
         l++;
     }
 
-    if(sum<=k){
+    if(sum<=k){         --O(1)
         sum=sum+A[r];
         maxLen=Max(maxlen,r-l+1);
     }
     r++;
 }
+
+TC: O(N)
+SC:O(1)
