@@ -1,0 +1,66 @@
+// Max Subarray with sum<=k
+
+A       2   5   1   10   10
+index   0   1   2   3    4
+                    l
+                            r
+
+length=5
+
+k=14
+sum=0+2+5+1+10-2-5+10-5=16-1=15-10=5
+maxLen=3
+
+// Psedocode 
+
+while(r<A.length()){        --O(N)
+    sum=sum+A[r];
+
+    while(sum>k){           --O(N)
+        sum=sum-A[l];
+        l++;
+    }
+
+    if(sum<=k){
+        sum=sum+A[r];
+        maxLen=Max(maxlen,r-l+1);
+    }
+    r++;
+}
+
+TC: O(2N)
+
+
+---------------------------------------------------------------------------------------------------------------
+
+// Max Subarray with sum<=k
+
+A          2   5   1   10   10
+index      0   1   2   3    4
+                                i
+                            j
+
+
+
+k=14
+sum=0+5=5
+maxLen=3
+
+
+//Psedocode
+
+int maxlen=0;
+for(int i=0;i<A.length();i++){
+    sum=0;
+    for(int j=i;j<A.length();j++){
+        sum=sum+A[j];
+        if(sum>k){
+            break;
+        }
+        else{
+            maxlen=Max(maxlen,j-i+1);
+        }
+    }
+}
+
+return maxLen;
