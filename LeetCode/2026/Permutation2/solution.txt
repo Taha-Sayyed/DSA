@@ -1,0 +1,32 @@
+Question Link: https://leetcode.com/problems/permutations-ii/
+
+
+class Solution {
+    public void findPermutation(List<List<Integer>>result,List<Integer>current,List<Character>sel,int[] nums,int k){
+        if(k==nums.length && !result.contains(current)){
+            result.add(new ArrayList<>(current));
+            return;
+        }
+        for(int i=0;i<nums.length;i++){
+            if(sel.get(i)=='F'){
+                current.add(nums[i]);
+                sel.set(i,'T');
+                findPermutation(result,current,sel,nums,k+1);
+
+                current.remove(current.size()-1);
+                sel.set(i,'F');
+            }
+        }
+    }
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        int k=0;
+        List<Character>sel=new ArrayList<>();
+        for(int i=0;i<nums.length;i++){
+            sel.add(i,'F');
+        }
+        List<List<Integer>>result=new ArrayList<>();
+        List<Integer>current=new ArrayList<>();
+        findPermutation(result,current,sel,nums,0);
+        return result;
+    }
+}
