@@ -1,0 +1,33 @@
+Question no 49
+
+class Solution {
+
+    public void func(String[] strs, HashMap<String,List<String>>mp,List<List<String>> result ){
+       
+        for(String s:strs){
+            char[] arr=s.toCharArray();
+            Arrays.sort(arr);
+            String key= String.valueOf(arr);
+            
+            if(!mp.containsKey(key)){
+                mp.put(key,new ArrayList<>(Arrays.asList(s)));
+            }
+            else{
+                mp.get(key).add(s);
+            }
+        }
+
+        for(List<String> group:mp.values()){
+            result.add(group);
+        }
+    }
+
+
+
+    public List<List<String>> groupAnagrams(String[] strs) {
+        HashMap<String,List<String>>mp=new HashMap<>();
+        List<List<String>> result=new ArrayList<>();
+        func(strs,mp,result);
+        return result;
+    }
+}
