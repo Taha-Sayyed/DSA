@@ -1,0 +1,30 @@
+Leetcode Question no 22
+
+class Solution {
+    public void func(int n,int open,int close,StringBuffer sb,List<String>result){
+        
+        if(sb.length()==2*n){
+            result.add(sb.toString());
+            return;
+        }
+        
+        if(open<n){
+            sb.append('(');
+            func(n,open+1,close,sb,result);
+            sb.deleteCharAt(sb.length()-1);
+        }
+        if(close<open){
+            sb.append(')');
+            func(n,open,close+1,sb,result);
+            sb.deleteCharAt(sb.length()-1);
+        }
+    }
+
+    public List<String> generateParenthesis(int n){
+        
+        StringBuffer sb=new StringBuffer();
+        List<String>result=new ArrayList<>();
+        func(n,0,0,sb,result);
+        return result;
+    }
+}
