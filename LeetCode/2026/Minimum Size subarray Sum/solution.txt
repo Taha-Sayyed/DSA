@@ -1,0 +1,53 @@
+Question no 209
+
+
+class Solution {
+    public int minSubArrayLen(int target, int[] nums) {
+        int l=0;
+        int r=0;
+        int sum=0;
+        int minlen=Integer.MAX_VALUE;
+        while(r<nums.length){
+            sum=sum+nums[r];
+
+            while(sum>=target){
+                minlen=Math.min(minlen,r-l+1);
+                sum=sum-nums[l];
+                l++;
+            }
+            r++;
+        }
+        if(minlen==Integer.MAX_VALUE){
+            return 0;
+        }
+        return minlen;
+    }
+}
+
+/**
+        ROUGH
+
+target=7
+
+nums    2   3   1   2   4   3
+index   0   1   2   3   4   5
+                        l
+                            r
+
+sum=0=2=5=6=8=6=10=7=9=10
+minlen=MAX_INT=4=3=2
+
+
+while(r>nums.length){
+sum=sum+nums[r];
+
+while(sum>=target){
+    minlen=Math.min(minlen,r-l+1);
+    sum=sum-nums[l];
+    l++;
+}
+
+r++;
+}
+
+ */
