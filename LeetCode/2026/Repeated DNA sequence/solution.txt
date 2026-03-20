@@ -1,0 +1,31 @@
+Question no 187
+
+class Solution {
+    public List<String> findRepeatedDnaSequences(String s) {
+        int l=0;
+        int r=9;
+
+        HashSet<String>st=new HashSet<>();
+        HashSet<String>result=new HashSet<>();
+
+        if(s.length()>10){
+            st.add(s.substring(0,10));
+        }
+
+        while(r<s.length()){
+            l++;
+            r++;
+            if(r<s.length()){
+                if(st.contains(s.substring(l,r+1))){
+                    result.add(s.substring(l,r+1));
+                }
+                else{
+                    st.add(s.substring(l,r+1));
+                }
+            }
+        }
+
+        List<String>final_result=new ArrayList<>(result);
+        return final_result;
+        }
+}
