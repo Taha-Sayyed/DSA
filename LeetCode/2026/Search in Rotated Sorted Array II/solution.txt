@@ -5,7 +5,7 @@ class Solution {
         int l=0;
         int h=nums.length-1;
         while(l<=h){
-            int mid=(l+h)/2;
+            int mid=l+(h-l)/2;
 
             if(nums[mid]==target){
                 return true;
@@ -13,18 +13,17 @@ class Solution {
             if(nums[l]==nums[mid] && nums[mid]==nums[h]){
                 l=l+1;
                 h=h-1;
-                continue;
             }
-            if(nums[l]<=nums[mid]){
-                if(target>=nums[l] && target<=nums[mid]){
+            else if(nums[l]<=nums[mid]){
+                if(target>=nums[l] && target<nums[mid]){
                     h=mid-1;
                 }
                 else{
                     l=mid+1;
                 }
             }
-            if(nums[mid]<nums[h]){
-                if(target>=nums[mid] && target <=nums[h]){
+            else{
+                if(target>nums[mid] && target <=nums[h]){
                     l=mid+1;
                 }
                 else{
