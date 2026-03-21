@@ -1,0 +1,33 @@
+Question no 73
+
+class Solution {
+    public void setZeroes(int[][] matrix) {
+
+        //row size
+        int m=matrix.length;
+
+        //column size
+        int n=matrix[0].length;
+
+        int[] row=new int[m]; //automatically initialized to zero
+        int[] column=new int[n]; //automatically initialized to zero
+
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(matrix[i][j]==0){
+                    row[i]=1;
+                    column[j]=1;
+                }
+            }
+        }
+
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(row[i]==1 || column[j]==1){
+                    matrix[i][j]=0;
+                }
+            }
+        }
+
+    }
+}
