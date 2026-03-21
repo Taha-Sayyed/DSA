@@ -6,7 +6,7 @@ A personal repository for practicing and mastering Data Structures, Algorithms, 
 
 ## 🖼️ [LeetCode Progress](https://leetcode.com/progress/)
 
-![LeetCode Progress](LeetCode/profile/20-03-26.png)
+![LeetCode Progress](LeetCode/profile/21-03-26.png)
 
 ---
 
