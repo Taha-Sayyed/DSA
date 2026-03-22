@@ -1,0 +1,40 @@
+
+Question no: 1539
+
+
+class Solution {
+
+    public int BS(int[] arr,int k, int[] miss){
+        int l=0;
+        int h=miss.length-1;
+
+        while(l<=h){
+            int mid=(l+h)/2;
+
+            // if(miss[mid]==k){
+            //     return mid;
+            // }
+            if(miss[mid]<k){
+                l=mid+1;
+            }
+            else{
+                h=mid-1;
+            }
+        }
+        return h;
+
+    } 
+    public int findKthPositive(int[] arr, int k) {
+        int[] miss=new int[arr.length];
+        for(int i=0;i<arr.length;i++){
+            miss[i]=arr[i]-(i+1);
+        }
+        int index_reqd=BS(arr,k,miss);
+
+        if (index_reqd == -1) {
+           return k;
+        }
+
+        return arr[index_reqd]+(k-miss[index_reqd]);
+    }
+}
