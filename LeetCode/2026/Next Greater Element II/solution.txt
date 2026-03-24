@@ -1,0 +1,22 @@
+Question no: 503
+
+
+class Solution {
+    public void NGE(Stack st,int[] extra_arr,int[] nums){
+        for(int i=2*nums.length-1;i>=0;i--){
+            while(!st.empty() && (Integer)st.peek()<=nums[i%nums.length]){
+                st.pop();
+            }
+            if(i<nums.length){
+                extra_arr[i]=st.empty() ? -1: (Integer)st.peek();
+            }
+            st.push(nums[i%nums.length]);
+        }
+    }
+    public int[] nextGreaterElements(int[] nums) {
+        Stack<Integer>st=new Stack<>();
+        int[] extra_arr=new int[nums.length];
+        NGE(st,extra_arr,nums);
+        return extra_arr;
+    }
+}
